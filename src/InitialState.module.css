@@ -1,0 +1,12 @@
+import React from 'react';
+
+
+function InitialState() {
+  return (
+    <div>
+
+    </div>
+  );
+}
+
+export default InitialState;

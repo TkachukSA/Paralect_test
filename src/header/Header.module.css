@@ -1,0 +1,26 @@
+.header{
+    height: 80px;
+    background-color: #1f1f20;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.nav{
+
+    /*//width: 300px;*/
+    /*display: flex;
+    justify-content: space-between;
+    font-size: 20px;*/
+}
+.nav a {
+    color: #ffffff;
+    padding: 0 20px 0 10px;
+    text-decoration: solid;
+    font: 300 15px/1.1 'Poppins', sans-serif;
+}
+.nav ul{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    list-style: none;
+}
