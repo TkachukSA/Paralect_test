@@ -1,16 +1,19 @@
 .header{
-    height: 80px;
-    background-color: #1f1f20;
+    height: 72px;
+    background-color: rgba(0, 100, 235, 1);
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
 }
 .nav{
-
-    /*//width: 300px;*/
-    /*display: flex;
+    padding-left: 20px;
+    width: 600px;
+    display: flex;
     justify-content: space-between;
-    font-size: 20px;*/
+    font-size: 20px;
+}
+.nav input{
+    width: 500px;
 }
 .nav a {
     color: #ffffff;
@@ -18,7 +21,7 @@
     text-decoration: solid;
     font: 300 15px/1.1 'Poppins', sans-serif;
 }
-.nav ul{
+.nav div{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;

@@ -1,16 +1,89 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Header from "./header/Header";
-import InitialStateContainer from "./InitialState";
-
-function App() {
-  return (
-    <div className="App">
-    <Header/>
-    <InitialStateContainer/>
-    </div>
-  );
+.mainBlock {
+    background-color: #E5E5E5;
+    /*height: 100vh;*/
+    text-align: left;
 }
 
-export default App;
+.container {
+    padding-top: 45px;
+    border: 1px solid;
+    min-height: 100%;
+    min-width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+}
+
+.test {
+    background-color: #E5E5E5;
+    width: 30%;
+    height: 100vh;
+    justify-content: center;
+    align-items: flex-start;
+    display: flex;
+}
+
+.infoContainer {
+    width: 292.08px;
+    height: 431.98px;
+
+    display: flex;
+    align-content: center;
+    /* justify-content: center; */
+    flex-direction: column;
+}
+
+.avatar {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+}
+
+.mainInfo {
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+}
+
+.followers {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.testRed {
+    background-color: #E5E5E5;
+    width: 70%;
+}
+.testRed h1{
+    align-items: flex-start;
+    padding: 0 32px;
+    margin: 0 32px;
+}
+.reposContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.itemRepos {
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 24px 32px;
+    /* padding: 20px; */
+    width: 812px;
+    height: 64px;
+    padding: 24px 32px;
+}
+

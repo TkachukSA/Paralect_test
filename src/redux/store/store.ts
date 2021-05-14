@@ -1,30 +1,16 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import {profileReducer} from "../reducers/profile-reducer";
-import {authReducer} from "../reducers/auth-reducer";
-import {RecoveryReducer} from "../../auth/recovery-password/RecoveryReducer";
-import {registrationReducer} from "../reducers/registration-reducer";
-import {loginReducer} from "../reducers/Login-Reducer";
 import thunk from "redux-thunk";
-import {appReducer} from "../reducers/appReducer";
-import {packsReducer} from "../../pages/Card/bll/PacksReducer";
-import {cardsReducer} from "../../pages/Card/bll/CardsReducer";
+import {profileReducer} from "../reducers/profile-reducer";
 
 
 const reducers = combineReducers({
-    profile: profileReducer,
-    auth: authReducer,
-    registration: registrationReducer,
-    recovery: RecoveryReducer,
-    logIn: loginReducer,
-    app:appReducer,
-    packs: packsReducer,
-    cards: cardsReducer
+    profile: profileReducer
 });
 
 const store = createStore(reducers, applyMiddleware(thunk));
 export default store
 
-export type AppStoreType = ReturnType<typeof reducers>
+export type AppRootStateType = ReturnType<typeof reducers>
 
 // @ts-ignore
 window.store = store; // for dev

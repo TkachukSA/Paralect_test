@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from "./header/Header";
+import {InitialState} from "./InitialState";
+import Profile from "./Profile";
+import {Redirect, Route, Switch} from 'react-router-dom';
+
+export const PATH = {
+
+    profilePage: "/profile/:userId?",
+    initialState: "/",
+    error: '/404',
+    redirect: '*'
+    // add paths
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+    return (
+        <div className="App">
+            <Header/>
+            <Switch>
+                <Route exact path={PATH.initialState} render={() => <InitialState/>}/>
+                <Route path={"/profile/:userId?"} render={() => <Profile/>}/>
+                <Route path={PATH.error} render={() => <h1>404: PAGE NOT FOUND</h1>}/>
+                <Redirect from={PATH.redirect} to={PATH.error}/>
+            </Switch>
+        </div>
+    );
 }
 
 export default App;

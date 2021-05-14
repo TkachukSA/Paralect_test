@@ -1,12 +1,27 @@
-import React from 'react';
-
-
-function InitialState() {
-  return (
-    <div>
-
-    </div>
-  );
+.mainBlock{
+  background-color: #E5E5E5;
+  height: 100vh;
+  text-align: left;
 }
 
-export default InitialState;
+.container{
+  border: 1px solid;
+  /*min-height: 100%;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;*/
+  min-height: 100%;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.container img{
+  padding: 50px;
+}

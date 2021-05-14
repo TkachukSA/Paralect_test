@@ -1,14 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Header from "./header/Header";
+import s from './InitialState.module.css'
+import findImg from './asses/image/image.svg'
+import userNotFound from './asses/image/notFound.svg'
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "./redux/store/store";
 
-function App() {
-  return (
-    <div className="App">
-    <Header/>
-    </div>
-  );
+
+export const InitialState: React.FC =() => {
+    const isFound = useSelector<AppRootStateType, boolean>(state => state.profile.userNotFound)
+
+    return (
+        <div className={s.mainBlock}>
+            <div className={s.container}>
+                {
+                    isFound? <>
+                        <div>
+                            <img src={userNotFound}/>
+                        </div>
+                        <div>
+                            User not found
+                        </div>
+                    </>: <>
+                        <div>
+                            <img src={findImg}/>
+                        </div>
+                        <div>
+                            Start with searching a GitHub user
+                            Typography
+                        </div>
+                    </>
+                }
+
+            </div>
+        </div>
+    );
 }
 
-export default App;
+
