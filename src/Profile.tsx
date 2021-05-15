@@ -24,11 +24,11 @@ function Profile() {
             dispatch(setUserTC(userId))
         }
 
-    }, [])
+    }, [isFound, dispatch, user])
+    debugger
 
-
-    if (isFound){
-        return <Redirect to={'/'} />
+    if (isFound) {
+        return <Redirect to={'/'}/>
     }
 
     return (
