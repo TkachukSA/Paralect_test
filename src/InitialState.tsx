@@ -5,17 +5,22 @@ import userNotFound from './asses/image/notFound.svg'
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "./redux/store/store";
 import { Redirect } from 'react-router-dom';
+import {RedType} from "./redux/reducers/profile-reducer";
 
 
 export const InitialState: React.FC = () => {
-    const isFound = useSelector<AppRootStateType, boolean>(state => state.profile.userNotFound)
+    const isFound = useSelector<AppRootStateType, RedType>(state => state.profile.userNotFound)
+
+    if (isFound === "true") {
+        return <Redirect to={'/profile/'}/>
+    }
 
 
     return (
         <div className={s.mainBlock}>
             <div className={s.container}>
                 {
-                    isFound ? <>
+                    isFound === "false" ? <>
                         <div>
                             <img src={userNotFound}/>
                         </div>

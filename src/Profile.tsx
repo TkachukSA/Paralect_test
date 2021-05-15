@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./redux/store/store";
 import {ReposResponseType, UserResponseType} from "./api/api";
 import {Redirect, useParams} from "react-router-dom";
-import {setUserTC} from "./redux/reducers/profile-reducer";
+import {RedType, setUserTC} from "./redux/reducers/profile-reducer";
 import ReactPaginate from 'react-paginate';
 import "bootstrap/scss/bootstrap.scss";
 import {InitialState} from "./InitialState";
@@ -14,7 +14,7 @@ import emptyList from "./asses/image/emptyList.svg";
 function Profile() {
     const user = useSelector<AppRootStateType, UserResponseType>(state => state.profile.user)
     const repos = useSelector<AppRootStateType, ReposResponseType[]>(state => state.profile.repos)
-    const isFound = useSelector<AppRootStateType, boolean>(state => state.profile.userNotFound)
+    const isFound = useSelector<AppRootStateType, RedType>(state => state.profile.userNotFound)
     const {userId} = useParams<Record<string, string | undefined>>();
     const dispatch = useDispatch()
 
@@ -25,9 +25,9 @@ function Profile() {
         }
 
     }, [isFound, dispatch, user])
-    debugger
 
-    if (isFound) {
+
+    if (isFound === "false") {
         return <Redirect to={'/'}/>
     }
 

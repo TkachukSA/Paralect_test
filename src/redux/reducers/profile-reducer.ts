@@ -1,11 +1,12 @@
 import {Dispatch} from "redux";
 import {gitHubAPI, ReposResponseType, UserResponseType} from "../../api/api";
 
+export type RedType= 'true' | 'false' | 'start'
 
 const initialState = {
     user: {} as UserResponseType,
     repos: [] as ReposResponseType[],
-    userNotFound: false
+    userNotFound : 'start' as RedType
 }
 export type InitialStateType = typeof initialState
 
@@ -30,7 +31,7 @@ export const profileReducer = (state: InitialStateType = initialState, action: A
 // actions
 export const setReposAC = (data: any) => ({type: 'SET_REPOS', data} as const)
 export const setUserAc = (user: any) => ({type: "SET_USER", user} as const)
-export const userNotFoundAc = (isFound: boolean) => ({type: "USER_NOT_FOUND", isFound} as const)
+export const userNotFoundAc = (isFound: RedType) => ({type: "USER_NOT_FOUND", isFound} as const)
 
 
 // thunks
@@ -43,13 +44,13 @@ export const setUserTC = (userName: string, per_page?: number, page?: number | u
         debugger
         const data1 = res[0].data
         dispatch(setUserAc(data1))
-        dispatch(userNotFoundAc(false))
+        dispatch(userNotFoundAc('true'))
 
         const data2 = res[1].data
         dispatch(setReposAC(data2))
     }).catch((err) => {
         debugger
-        dispatch(userNotFoundAc(true))
+        dispatch(userNotFoundAc('false'))
         /*alert(err.response.data.message)*/
     })
 
