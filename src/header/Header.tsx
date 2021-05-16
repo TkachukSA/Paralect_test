@@ -40,11 +40,7 @@ function Header() {
             <div className={style.nav}>
                 <div><img src={ims}/></div>
                 <div><input value={value} onKeyPress={findUser} onChange={onChangeValue}/></div>
-             {/*<NavLink onClick={findUser} to={'/profile/' + value}>Login</NavLink>*/}
-
-
             </div>
-
         </div>
     );
 }

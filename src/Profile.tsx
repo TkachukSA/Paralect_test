@@ -20,11 +20,12 @@ function Profile() {
 
 
     useEffect(() => {
+        debugger
         if (userId) {
             dispatch(setUserTC(userId))
         }
 
-    }, [isFound, dispatch, user])
+    }, [])
 
 
     if (isFound === "false") {
@@ -50,14 +51,14 @@ function Profile() {
                 <div className={s.testRed}>
 
                     {
-                        user.public_repos === 0 ? <>
+                        user.public_repos === 0 ? <div className={s.items}>
                                 <div>
                                     <img src={emptyList}/>
                                 </div>
                                 <div>
                                     Repository list is empty
                                 </div>
-                            </>
+                            </div>
                             : <Repositories repos={repos} user={user}/>
                     }
                 </div>
@@ -75,9 +76,24 @@ type RepositoriesType = {
 
 function Repositories(props: RepositoriesType) {
     const dispatch = useDispatch()
+
+/*    const items = (selected: any) => {
+        let b2 = selected * 4
+        let a = b2 - 3
+debugger
+        return (<div>
+                {a} {b2}
+            </div>
+        )
+    }
+    let asa = null*/
+
     const setPage = ({selected}: any) => {
         dispatch(setUserTC(props.user.login, 4, selected + 1))
+   /*     asa = items(selected)*/
     }
+
+
     return (<>
         <h1 className={s.reposContainer}>Repositories {`(${props.user.public_repos})`}</h1>
         {props.repos.map(r => {
