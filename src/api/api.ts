@@ -32,6 +32,7 @@ export type UserResponseType = {
     "public_repos": number,
     "followers": number,
     "following": number,
+    "name": string
 
 }
 export type ReposResponseType = {

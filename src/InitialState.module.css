@@ -25,3 +25,6 @@
 .container img{
   padding: 50px;
 }
+.items{
+  display: flex;
+}

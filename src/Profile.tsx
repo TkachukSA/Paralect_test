@@ -7,6 +7,7 @@ import {Redirect, useParams} from "react-router-dom";
 import {RedType, setUserTC} from "./redux/reducers/profile-reducer";
 import ReactPaginate from 'react-paginate';
 import "bootstrap/scss/bootstrap.scss";
+import l from './asses/loading/Loading.module.css'
 import {InitialState} from "./InitialState";
 import emptyList from "./asses/image/emptyList.svg";
 
@@ -15,12 +16,12 @@ function Profile() {
     const user = useSelector<AppRootStateType, UserResponseType>(state => state.profile.user)
     const repos = useSelector<AppRootStateType, ReposResponseType[]>(state => state.profile.repos)
     const isFound = useSelector<AppRootStateType, RedType>(state => state.profile.userNotFound)
+    const loading = useSelector<AppRootStateType, boolean>(state => state.profile.loading)
     const {userId} = useParams<Record<string, string | undefined>>();
     const dispatch = useDispatch()
 
 
     useEffect(() => {
-        debugger
         if (userId) {
             dispatch(setUserTC(userId))
         }
@@ -32,6 +33,9 @@ function Profile() {
         return <Redirect to={'/'}/>
     }
 
+    if(loading){
+        return <div className={l.loader}>Loading...</div>
+    }
     return (
         <div className={s.mainBlock}>
             <div className={s.container}>
@@ -39,8 +43,8 @@ function Profile() {
                     <div className={s.infoContainer}>
                         <img className={s.avatar} src={user.avatar_url}/>
                         <div className={s.mainInfo}>
-                            <div>{user.login}</div>
-                            <div><a href={user.html_url}>ссылка</a></div>
+                            <div>{user.name}</div>
+                            <div><a target={"_blank"} href={user.html_url}>{user.login}</a></div>
                             <div className={s.followers}>
                                 <span>followers :{user.followers}</span>
                                 <span>following {user.following}</span>
@@ -77,20 +81,9 @@ type RepositoriesType = {
 function Repositories(props: RepositoriesType) {
     const dispatch = useDispatch()
 
-/*    const items = (selected: any) => {
-        let b2 = selected * 4
-        let a = b2 - 3
-debugger
-        return (<div>
-                {a} {b2}
-            </div>
-        )
-    }
-    let asa = null*/
 
     const setPage = ({selected}: any) => {
         dispatch(setUserTC(props.user.login, 4, selected + 1))
-   /*     asa = items(selected)*/
     }
 
 
@@ -105,11 +98,11 @@ debugger
             </div>
         })}
 
-        <div>
+        <div className={s.pagination}>
             <ReactPaginate
                 pageCount={Math.ceil(props.user.public_repos / 4)}
-                pageRangeDisplayed={3}
-                marginPagesDisplayed={3}
+                pageRangeDisplayed={2}
+                marginPagesDisplayed={1}
                 onPageChange={setPage}
                 containerClassName={"pagination"}
                 activeClassName={"active"}

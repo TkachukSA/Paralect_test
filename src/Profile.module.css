@@ -1,8 +1,6 @@
 .mainBlock {
     background-color: #E5E5E5;
-    /*height: 100vh;*/
     text-align: left;
-    width: 1366px;
 }
 
 .container {
@@ -12,28 +10,46 @@
     min-width: 80%;
     margin: 0 auto;
     display: flex;
-    /*justify-content: space-between;*/
+    justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
 
 }
+@media screen and (max-width: 770px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
 
 .test {
     background-color: #E5E5E5;
     width: 30%;
-    height: 100vh;
+    height: 100%;
     justify-content: center;
     align-items: flex-start;
     display: flex;
 }
+@media screen and (max-width: 770px) {
+    .test {
+        background-color: #E5E5E5;
+        width: 100%;
+        /* height: 100vh; */
+        justify-content: center;
+        align-items: center;
+        display: flex;
+       /* padding-bottom: 100px;*/
+
+    }
+}
+
+
 
 .infoContainer {
     width: 292.08px;
     height: 431.98px;
-
     display: flex;
     align-content: center;
-    /* justify-content: center; */
     flex-direction: column;
 }
 
@@ -61,12 +77,12 @@
 
 .testRed {
     background-color: #E5E5E5;
-
-    height: 100%;
-    justify-content: center;
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
+    width: 70%;
+}
+@media screen and (max-width: 770px) {
+    .testRed {
+        width: 80%;
+    }
 }
 .testRed h1{
     align-items: flex-start;
@@ -74,10 +90,10 @@
     margin: 0 32px;
 }
 .reposContainer {
-    display: flex;
+   /* display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column;*/
 }
 
 .itemRepos {
@@ -89,16 +105,28 @@
     margin: 24px 32px;
     /* padding: 20px; */
     width: 812px;
-    height: 64px;
+    min-height: 64px;
     padding: 24px 32px;
 }
-.items{
+.pagination {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    padding-top: 200px;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 24px 32px;
+    /* padding: 20px; */
+    width: 812px;
+    height: 64px;
+
 }
-.items img{
-    padding: 20px;
+
+@media screen and (max-width: 1084px) {
+    .itemRepos {
+        width: 100%;
+    }
+}@media screen and (max-width: 1084px) {
+    .pagination {
+        width: 100%;
+    }
 }
+
