@@ -13,7 +13,7 @@ import group from '../../asses/image/group.svg'
 import provate from '../../asses/image/provate.svg'
 
 
-function Profile() {
+export const Profile = React.memo(() => {
     const user = useSelector<AppRootStateType, UserResponseType>(state => state.profile.user)
     const repos = useSelector<AppRootStateType, ReposResponseType[]>(state => state.profile.repos)
     const isFound = useSelector<AppRootStateType, RedType>(state => state.profile.userNotFound)
@@ -26,7 +26,7 @@ function Profile() {
             dispatch(setUserTC(userId))
         }
 
-    }, [dispatch])
+    }, [dispatch, userId])
 
 
     if (isFound === "false") {
@@ -44,7 +44,7 @@ function Profile() {
                         <img alt={''} className={s.avatar} src={user.avatar_url}/>
                         <div className={s.mainInfo}>
                             <h2>{user.name}</h2>
-                            <div><a target={"_blank"} href={user.html_url}>{user.login}</a></div>
+                            <div><a rel="noreferrer" target={"_blank"} href={user.html_url}>{user.login}</a></div>
                             <div className={s.followers}>
                                 <img alt={''} src={group}/> <span>followers :{user.followers}</span>
                                 <img alt={''} src={provate}/><span>following {user.following}</span>
@@ -69,7 +69,5 @@ function Profile() {
             </div>
         </div>
     </>);
-}
-
-export default Profile;
+})
 

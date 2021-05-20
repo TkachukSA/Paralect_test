@@ -21,8 +21,7 @@ export const gitHubAPI = {
     }
 }
 
-///https://api.github.com/users/asa121asa/repos
-//https://api.github.com/users/USERNAME
+
 
 export type UserResponseType = {
     "login": string,

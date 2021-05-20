@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import s from '../profile/Profile.module.css'
 import {useDispatch} from "react-redux";
 import {ReposResponseType, UserResponseType} from "../../dal/api/api";
@@ -12,21 +12,22 @@ type RepositoriesType = {
     repos: ReposResponseType[]
 }
 
-export function Repositories(props: RepositoriesType) {
+
+export const Repositories = React.memo(({repos, user}: RepositoriesType) => {
     const dispatch = useDispatch()
 
 
-    const setPage = ({selected}: any) => {
-        dispatch(setUserTC(props.user.login, 4, selected + 1))
-    }
+    const setPage = useCallback(({selected}: any) => {
+        dispatch(setUserTC(user.login, 4, selected + 1))
+    }, [])
 
 
     return (<>
-        <h1 className={s.reposContainer}>Repositories {`(${props.user.public_repos})`}</h1>
-        {props.repos.map(r => {
+        <h1 className={s.reposContainer}>Repositories {`(${user.public_repos})`}</h1>
+        {repos.map(r => {
             return <div className={s.reposContainer} key={r.id}>
                 <div className={s.itemRepos}>
-                    <div>{<a target={"_blank"} href={r.html_url}>{r.name}</a>}</div>
+                    <div>{<a rel="noreferrer" target={"_blank"} href={r.html_url}>{r.name}</a>}</div>
                     <div>{r.description}</div>
                 </div>
             </div>
@@ -34,7 +35,7 @@ export function Repositories(props: RepositoriesType) {
 
         <div className={s.pagination}>
             <ReactPaginate
-                pageCount={Math.ceil(props.user.public_repos / 4)}
+                pageCount={Math.ceil(user.public_repos / 4)}
                 pageRangeDisplayed={2}
                 marginPagesDisplayed={1}
                 onPageChange={setPage}
@@ -53,4 +54,4 @@ export function Repositories(props: RepositoriesType) {
             />
         </div>
     </>)
-}
+})

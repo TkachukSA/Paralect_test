@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import Header from "./ui/header/Header";
+import {Header} from "./ui/header/Header";
 import {InitialState} from "./ui/initialState/InitialState";
-import Profile from "./ui/profile/Profile";
+import {Profile} from "./ui/profile/Profile";
 import {Redirect, Route, Switch} from 'react-router-dom';
 
 export const PATH = {
@@ -20,7 +20,7 @@ function App() {
             <Header/>
             <Switch>
                 <Route exact path={PATH.initialState} render={() => <InitialState/>}/>
-                <Route path={"/profile/:userId?"} render={() => <Profile/>}/>
+                <Route path={PATH.profilePage} render={() => <Profile/>}/>
                 <Route path={PATH.error} render={() => <h1>404: PAGE NOT FOUND</h1>}/>
                 <Redirect from={PATH.redirect} to={PATH.error}/>
             </Switch>
