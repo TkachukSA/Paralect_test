@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
-import Header from "./header/Header";
-import {InitialState} from "./InitialState";
-import Profile from "./Profile";
+import Header from "./ui/header/Header";
+import {InitialState} from "./ui/initialState/InitialState";
+import Profile from "./ui/profile/Profile";
 import {Redirect, Route, Switch} from 'react-router-dom';
 
 export const PATH = {
-
     profilePage: "/profile/:userId?",
     initialState: "/",
     error: '/404',
@@ -15,7 +14,6 @@ export const PATH = {
 }
 
 function App() {
-
 
     return (
         <div className="App">

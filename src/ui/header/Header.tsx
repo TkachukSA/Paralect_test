@@ -3,9 +3,9 @@ import {NavLink, Redirect, useHistory} from 'react-router-dom';
 import style from './Header.module.css'
 import ims from './Vector.svg'
 import {useDispatch, useSelector} from "react-redux";
-import {RedType, setUserTC} from "../redux/reducers/profile-reducer";
-import {AppRootStateType} from "../redux/store/store";
-import {UserResponseType} from "../api/api";
+import {RedType, setUserTC} from "../../bll/redux/reducers/profile-reducer";
+import {AppRootStateType} from "../../bll/redux/store/store";
+import {UserResponseType} from "../../dal/api/api";
 
 
 

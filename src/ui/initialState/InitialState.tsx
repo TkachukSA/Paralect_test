@@ -1,11 +1,11 @@
 import React from 'react';
 import s from './InitialState.module.css'
-import findImg from './asses/image/image.svg'
-import userNotFound from './asses/image/notFound.svg'
+import findImg from '../../asses/image/image.svg'
+import userNotFound from '../../asses/image/notFound.svg'
 import {useSelector} from "react-redux";
-import {AppRootStateType} from "./redux/store/store";
+import {AppRootStateType} from "../../bll/redux/store/store";
 import { Redirect } from 'react-router-dom';
-import {RedType} from "./redux/reducers/profile-reducer";
+import {RedType} from "../../bll/redux/reducers/profile-reducer";
 
 
 export const InitialState: React.FC = () => {
