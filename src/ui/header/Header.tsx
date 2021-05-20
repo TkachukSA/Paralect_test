@@ -22,7 +22,7 @@ export const Header = React.memo(() => {
             history.push('/profile/' + value);
             dispatch(setUserTC(value))
         }
-    }, [])
+    }, [dispatch, history, value])
     const onChangeValue = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.currentTarget.value)
     }, [])

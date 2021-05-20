@@ -19,7 +19,7 @@ export const Repositories = React.memo(({repos, user}: RepositoriesType) => {
 
     const setPage = useCallback(({selected}: any) => {
         dispatch(setUserTC(user.login, 4, selected + 1))
-    }, [])
+    }, [dispatch, user.login])
 
 
     return (<>
